@@ -1,0 +1,10 @@
+Template.description.events({
+  'click .read': function(){
+    var articleId = this.id;
+    Session.set('singleArticle', articleId);
+    var singleArticle = Session.get('singleArticle');
+    if(articleId == singleArticle){
+      return session.get('article')
+}
+  }
+});

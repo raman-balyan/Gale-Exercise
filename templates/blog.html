@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+  {% block content %}
+  <h2>{{single_blog.title}}</h2>
+  <ul>
+  <p><em>{{single_blog.pub_time}} | {{single_blog.author}} | Category: {{single_blog.category}}</em></p>
+  </ul>
+
+  {% if single_blog.main_image %}
+    <img src = "/media/{{single_blog.main_image}}" width="500">
+  {% endif %}
+  {% if single_blog.optional_image %}
+    <img src = "/media/{{single_blog.optional_image}}" width="150" height="250" style="float:right">
+  {% endif %}
+  <p>{{single_blog.full_content|linebreaks}}</p>
+  <br><br>
+    <hr>
+    <h5>What To Read Next</h5>
+    <hr>
+    {% for blog in related_blogs %}
+      <div class = "row" style = "display:inline-block; padding: 20px;">
+      <img src = "/media/{{blog.main_image}}" width="110"><br>
+      <center><a href = "/{{blog.id}}">Read</a></center>
+      </div>
+    {% endfor %}
+  {% endblock %}
+

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+  {% block content %}
+    <h2>Top 10 List</h2>
+<!-- Fetching the random blog to preview -->
+    <p><em>{{single_latest_blog.pub_time}} | {{single_latest_blog.author}}</em>
+    </p>
+    <img src = "/media/{{single_latest_blog.main_image}}" width="500">
+    <p>{{single_latest_blog.limited_content}}</p>
+    {% if latest_blogs %}
+      <ul>
+      {% for blog in latest_blogs %}
+        <h3>{{blog.title}}</h3>
+        <p>{{blog.limited_content}}</p>
+        <a href = "/{{blog.id}}"><button type = "button" class = "btn btn-default">Read More</button></a>
+        <br>
+      {% endfor %}
+      </ul>
+    {% endif %}
+    <br><br>
+    <hr>
+    <h5>What To Read Next</h5>
+    <hr>
+    {% for blog in related_blogs %}
+      <div class = "row" style = "display:inline-block; padding: 20px;">
+	    <img src = "/media/{{blog.main_image}}" width="110"><br>
+	    <center><a href = "/{{blog.id}}">Read</a></center>
+      </div>
+    {% endfor %}
+  {% endblock %}
+
+
+
